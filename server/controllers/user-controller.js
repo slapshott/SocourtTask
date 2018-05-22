@@ -2,10 +2,9 @@ const encryption = require('../util/encryption');
 const User = require('mongoose').model('User');
 
 module.exports = {
-    registerGet: (req, res) => {
-        res.render('users/register');
-    },
+    
     registerPost: async (req, res) => {
+        console.log('here')
         const reqUser = req.body;
         const salt = encryption.generateSalt();
         const hashedPass =
@@ -15,12 +14,11 @@ module.exports = {
                 username: reqUser.username,
                 hashedPass,
                 salt,
-                firstName: reqUser.firstName,
-                lastName: reqUser.lastName,
                 roles: []
             });
             req.logIn(user, (err, user) => {
                 if (err) {
+                    console.log(err)
                     res.locals.globalError = err;
                     res.redirect('/register', user);
                 } else {
@@ -33,13 +31,12 @@ module.exports = {
             res.redirec('/register');
         }
     },
+
     logout: (req, res) => {
         req.logout();
         res.redirect('/');
     },
-    loginGet: (req, res) => {
-        res.render('users/login');
-    },
+    
     loginPost: async (req, res) => {
         const reqUser = req.body;
         try {

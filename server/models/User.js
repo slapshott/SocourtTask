@@ -4,8 +4,6 @@ const encryption = require('../util/encryption');
 const userSchema = new mongoose.Schema({
     username: { type: mongoose.Schema.Types.String, required: true, unique: true },
     hashedPass: { type: mongoose.Schema.Types.String, required: true },
-    firstName: { type: mongoose.Schema.Types.String },
-    lastName: { type: mongoose.Schema.Types.String },
     salt: { type: mongoose.Schema.Types.String, required: true },
     roles: [{ type: mongoose.Schema.Types.String }],
     isAdmin: { type: Boolean, default: false }

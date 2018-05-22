@@ -7,7 +7,7 @@ export default class LoginPage extends Component {
         super(props);
 
         this.state = {
-            email: '',
+            name: '',
             password: ''
         };
 
@@ -19,9 +19,10 @@ export default class LoginPage extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    onSubmitHandler(e) {
+    async onSubmitHandler(e) {
         e.preventDefault();
-        login(this.state.email, this.state.password);
+        const res = await login(this.state.name, this.state.password);
+        console.log(res)
     }
 
     render() {
@@ -30,10 +31,10 @@ export default class LoginPage extends Component {
                 <h1>Login</h1>
                 <form onSubmit={this.onSubmitHandler}>
                     <Input
-                        name="email"
+                        name="name"
                         value={this.state.email}
                         onChange={this.onChangeHandler}
-                        label="E-mail"
+                        label="Name"
                     />
                     <Input
                         name="password"

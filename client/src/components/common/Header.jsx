@@ -11,6 +11,8 @@ export default class Header extends Component {
                 {loggedIn && <a href="javascript:void(0)" onClick={onLogout}>Logout</a>}
                 {!loggedIn && <NavLink to="/login" activeClassName="active">Login</NavLink>}
                 {!loggedIn && <NavLink to="/register" activeClassName="active">Register</NavLink>}
+                <NavLink to="/api/books" activeClassName="active">Books</NavLink>
+                <NavLink to="/api/genres" activeClassName="active">Genres</NavLink>
             </header>
         );
     }

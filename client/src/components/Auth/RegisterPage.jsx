@@ -8,7 +8,6 @@ export default class RegisterPage extends Component {
 
         this.state = {
             name: '',
-            email: '',
             password: '',
             repeat: ''
         };
@@ -21,9 +20,10 @@ export default class RegisterPage extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    onSubmitHandler(e) {
+    async onSubmitHandler(e) {
         e.preventDefault();
-        register(this.state.name, this.state.email, this.state.password);
+        const res = await register(this.state.name, this.state.password);
+        console.log(res)
     }
 
     render() {
@@ -36,12 +36,6 @@ export default class RegisterPage extends Component {
                         value={this.state.name}
                         onChange={this.onChangeHandler}
                         label="Name"
-                    />
-                    <Input
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.onChangeHandler}
-                        label="E-mail"
                     />
                     <Input
                         name="password"
