@@ -32,7 +32,7 @@ async function login(name, password) {
         });
         return await res.json();
     }catch (err){
-        console.log(err) 
+        return err
     }    
 }
 
