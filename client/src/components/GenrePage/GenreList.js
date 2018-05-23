@@ -23,7 +23,7 @@ export default class GenreList extends Component {
 
 
     render(){
-        let genres = Object.values(this.state.genres)
+        let genres = this.state.genres
         return(
             <div>
                 <p>Genres: </p>

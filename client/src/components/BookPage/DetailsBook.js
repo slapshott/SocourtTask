@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getBookById } from '../../api/remote'
 
 
-export default class SingelBook extends Component {
+export default class DetailsBook extends Component {
 
     constructor(props){
         super(props)
@@ -17,35 +17,33 @@ export default class SingelBook extends Component {
     }
 
     async getBook(){
-        let id = Number(this.props.match.params.id)
+        let id = this.props.match.params.id
         const book = await getBookById(id)
         this.setState({book: book})
-        console.log(this.state.book)
     }
 
     render(){
         return(
             <div className="container">
-                <p> 
-                    
-                    <span>
-                    Book name:
+                <p>    
+                Book name:
+                    <span className="details">  
                         {this.state.book.name}
                     </span><br/>
-                    <span>
-                        Author:
+                Author:
+                    <span className="details">
                         {this.state.book.author}
                     </span><br/>
-                    <span>
-                        Genre:
+                Genre:
+                    <span className="details">  
                         {this.state.book.genre}
                     </span><br/>
-                    <span>
-                        Date of creation:
+                Date of creation:
+                    <span className="details">
                         {this.state.book.creationDate}
                     </span><br/>
-                    <span>
-                        last updated:
+                last updated:
+                    <span className="details">
                         {this.state.book.lastUpdate}
                     </span><br/>
                 </p>

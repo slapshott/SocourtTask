@@ -29,7 +29,11 @@ div > p {
 }
 
 span {
-  color: blue
+  color: blue;
+}
+
+.details {
+  padding: 1em
 }
 
 p > span {

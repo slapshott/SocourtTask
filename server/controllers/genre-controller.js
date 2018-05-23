@@ -1,25 +1,19 @@
+const Genre = require('../models/Genre')
+
 module.exports = {
     getAllGenres: (req,res) => {
-        res.json([
-            {
-            'name': 'drama',
-            'creationDate': '1893',
-            'lastUpdate': '1893'
-            },
-            {
-            'name': 'fantasy',
-            'creationDate': '1984',
-            'lastUpdate': '2018'
-            }
-    ])
+        Genre.find({})
+            .then((genres) => {
+                console.log(genres)
+                res.json(genres)
+            })
     },
     getGenreById: (req,res) => {
         const id = req.params.id
         res.json({id})
     },
-    searchGenreByName: (req, res) => {
+    searchBookByGenre: (req, res) => {
         
     }
-
     
 }

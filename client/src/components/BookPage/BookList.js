@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { getAllBooks } from '../../api/remote'
 import BookCard from './BookCard'
-import SearchBook from './SearchBook'
 
 export default class BookList extends Component {
 
@@ -9,20 +8,9 @@ export default class BookList extends Component {
         super(props)
 
         this.state = {
-            books: [], 
-            search: ''  
+            books: [],   
         }
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)    
     }   
-
-    onChange(e){
-        this.setState({ [e.target.name]: e.target.value })
-    }
-
-    onSubmit(e){
-        e.preventDefault()
-    }
 
     componentDidMount(){
         this.getBooks()
@@ -34,7 +22,7 @@ export default class BookList extends Component {
     }
 
     render(){
-        let books = Object.values(this.state.books)
+        let books = (this.state.books)
         return(
             <div>
                 <p>Books:</p>
@@ -45,22 +33,13 @@ export default class BookList extends Component {
                             genre={b.genre}
                             creationDate={b.creationDate}
                             lastUpdate={b.lastUpdate}
-                            id={i+1}
+                            id={b._id}
                             key={i}
                         />
                 })}
-                <form >
-                <input 
-                    onChange={this.onChange}
-                    name='search'
-                    value={this.state.search}
-                    className= "searchField"
-                /> 
-                </form>
-                <SearchBook
-                    name={this.state.search}
-                    />
+                
             </div> 
         )
+
     }
 } 
