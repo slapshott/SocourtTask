@@ -1,10 +1,17 @@
 module.exports = {
     getAllGenres: (req,res) => {
-        res.json([{
-            'name': 'Fantasy',
-            'creationDate': new Date(Date.now()),
-            'lastUpdate': '11-03-2018'
-        }])
+        res.json([
+            {
+            'name': 'drama',
+            'creationDate': '1893',
+            'lastUpdate': '1893'
+            },
+            {
+            'name': 'fantasy',
+            'creationDate': '1984',
+            'lastUpdate': '2018'
+            }
+    ])
     },
     getGenreById: (req,res) => {
         const id = req.params.id

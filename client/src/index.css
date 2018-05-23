@@ -23,3 +23,15 @@ header a{
 .searchField {
   margin: 2em
 }
+
+div > p {
+  margin: 2em
+}
+
+span {
+  color: blue
+}
+
+p > span {
+  color: black
+}

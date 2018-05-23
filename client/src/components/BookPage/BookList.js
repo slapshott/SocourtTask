@@ -37,6 +37,7 @@ export default class BookList extends Component {
         let books = Object.values(this.state.books)
         return(
             <div>
+                <p>Books:</p>
                 {books.map((b,i) => {
                     return <BookCard
                             name={b.name}
@@ -44,6 +45,7 @@ export default class BookList extends Component {
                             genre={b.genre}
                             creationDate={b.creationDate}
                             lastUpdate={b.lastUpdate}
+                            id={i+1}
                             key={i}
                         />
                 })}

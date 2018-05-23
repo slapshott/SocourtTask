@@ -26,6 +26,7 @@ export default class GenreList extends Component {
         let genres = Object.values(this.state.genres)
         return(
             <div>
+                <p>Genres: </p>
                 {genres.map((g,i) => {
                     return <GenreCard
                             name={g.name}
