@@ -63,7 +63,7 @@ async function getBookById(id){
     }   
 }
 
-async function getGenreById(id){
+async function getBookByGenre(id){
     try{
         const res = await fetch(host + 'api/genre/' + id)
         return await res.json()
@@ -108,7 +108,7 @@ export {
     getAllBooks, 
     getAllGenres, 
     getBookById, 
-    getGenreById, 
+    getBookByGenre, 
     createBook, 
     searchByGenre 
 };

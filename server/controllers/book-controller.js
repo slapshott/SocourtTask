@@ -12,14 +12,8 @@ module.exports = {
         console.log(id)
         Book.findById(id)
             .then((book) => {
-                console.log(book)
                 res.json(book)
             })
-    },
-    searchBookByName: (req, res) => {
-        const searchedBook = req.params.book
-        Book.findByName({searchedBook})
-
     },
     postBook: (req, res) => {
         let book = req.body;

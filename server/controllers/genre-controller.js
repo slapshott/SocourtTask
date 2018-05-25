@@ -1,19 +1,20 @@
-const Genre = require('../models/Genre')
-
+const Genre = require('../models/Genre');
+const Book = require('../models/Book');
 module.exports = {
     getAllGenres: (req,res) => {
         Genre.find({})
             .then((genres) => {
-                console.log(genres)
                 res.json(genres)
             })
     },
-    getGenreById: (req,res) => {
-        const id = req.params.id
-        res.json({id})
-    },
-    searchBookByGenre: (req, res) => {
-        
+    getBookByGenre: (req,res) => {
+        let genre = req.params.id;
+            
+        Book.find()
+            .where({genre: genre})
+            .then((books) => {
+                res.json(books)
+            })
     }
     
 }

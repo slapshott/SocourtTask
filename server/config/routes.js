@@ -19,10 +19,9 @@ module.exports = app => {
     
     // Genres
     app.get('/api/genres', controllers.genre.getAllGenres)
-    app.get('/api/genre/:id', controllers.genre.getGenreById)
-    app.get('/api/genres/search', controllers.genre.searchBookByGenre)
+    app.get('/api/genre/:id', controllers.genre.getBookByGenre)
 
-
+    
     // Error
     app.all('*', (req, res) => {
         res.status(404);
