@@ -15,6 +15,18 @@ module.exports = {
                 res.json(book)
             })
     },
+    searchBookByName: (req, res) => {
+        const name = req.query.name
+        
+        Book.find()
+            .where({name: name})
+            .then((book) => {
+                res.json(book)
+                console.log(book)
+            })
+
+        
+    },
     postBook: (req, res) => {
         let book = req.body;
         console.log(book)

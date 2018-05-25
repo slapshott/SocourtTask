@@ -24,6 +24,7 @@ export default class GenreList extends Component {
 
     render(){
         let genres = this.state.genres
+        console.log(genres)
         return(
             <div>
                 <p>Genres: </p>
@@ -34,6 +35,8 @@ export default class GenreList extends Component {
                             lastUpdate={g.lastUpdate}
                             key={i}
                         />
+                    // return  <p key={i}>{g}</p>
+                    
                 })}
             </div>
         )

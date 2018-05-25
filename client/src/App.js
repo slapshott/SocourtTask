@@ -12,6 +12,7 @@ import CreateBook from './components/BookPage/CreateBook';
 import GenreList from './components/GenrePage/GenreList';
 import SearchGenre from './components/GenrePage/SearchGenre';
 import BooksByGenre from './components/GenrePage/BooksByGenre';
+import BookByName from './components/BookPage/BookByName';
 
 class App extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class App extends Component {
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
-                    <Route path="/api/genres/search" component={SearchGenre} />
+                    <Route path="/api/books/search" component={BookByName} />
                     <Route path="/api/createBook" component={CreateBook} />
                     <Route path="/api/books" component={BookList} />
                     <Route path="/api/book/:id" component={DetailsBook} />
