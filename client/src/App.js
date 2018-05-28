@@ -10,9 +10,9 @@ import DetailsBook from './components/BookPage/DetailsBook';
 import CreateBook from './components/BookPage/CreateBook';
 // Genre
 import GenreList from './components/GenrePage/GenreList';
-import SearchGenre from './components/GenrePage/SearchGenre';
 import BooksByGenre from './components/GenrePage/BooksByGenre';
 import BookByName from './components/BookPage/BookByName';
+import BookByGenre from './components/BookPage/BookByGenre';
 
 class App extends Component {
     constructor(props) {
@@ -34,10 +34,12 @@ class App extends Component {
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
+                    <Route path="/api/genres/search" component={BookByGenre} />
                     <Route path="/api/books/search" component={BookByName} />
                     <Route path="/api/createBook" component={CreateBook} />
                     <Route path="/api/books" component={BookList} />
                     <Route path="/api/book/:id" component={DetailsBook} />
+                    
                     <Route path="/api/genres" component={GenreList} />
                     <Route path="/api/genre/:id" component={BooksByGenre} />
                 </Switch>

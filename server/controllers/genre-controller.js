@@ -1,5 +1,6 @@
 const Genre = require('../models/Genre');
 const Book = require('../models/Book');
+
 module.exports = {
     getAllGenres: (req,res) => {
         Genre.find()
@@ -25,6 +26,17 @@ module.exports = {
             .where({genre: genre})
             .then((books) => {
                 res.json(books)
+            })
+    },
+    searchBookByGenre: (req, res) => {
+        const genre = req.query.genre
+        console.log(req.query.genre)
+
+        Book.find()
+            .where({genre: genre})
+            .then((books) => {
+                res.json(books)
+                console.log(books)
             })
     }
     

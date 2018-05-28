@@ -111,6 +111,15 @@ async function searchBookByName(name){
     }
 }
 
+async function searchBookByGenre(genre){
+    try{
+        const res = await fetch(host + 'api/genres/search?genre=' + genre)
+        return await res.json()
+    }catch(e){
+        console.log(e)
+    }
+}
+
 export { 
     register, 
     login, 
@@ -120,5 +129,6 @@ export {
     getBookByGenre, 
     createBook, 
     searchByGenre,
-    searchBookByName
+    searchBookByName,
+    searchBookByGenre
 };

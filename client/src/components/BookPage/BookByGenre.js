@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { searchBookByName } from '../../api/remote'
+import { searchBookByGenre } from '../../api/remote'
 import { Link } from 'react-router-dom';
 
-export default class BookByName extends Component {
+export default class BookByGenre extends Component {
     
     constructor(props){
         super(props)
         this.state = {
-            name: '',
-            book: ''
+            genre: '',
+            books: ''
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -24,28 +24,31 @@ export default class BookByName extends Component {
     }
 
     async getData(){
-        const res = await searchBookByName(this.state.name)
-        this.setState({book:res})
+        const res = await searchBookByGenre(this.state.genre)
+        console.log(res)
+        this.setState({books:res})
     }
 
 
     render(){
-        let book = this.state.book[0]
+        let books = this.state.books
        
         return(
             <div className="container"> 
                 <form onSubmit={this.onSubmit}>
                 <input
-                    name="name"
+                    name="genre"
                     onChange={this.onChange}
-                    value={this.state.name}
+                    value={this.state.genre}
                 />
                 <input type="submit" value="Search" />
                 </form>
-                {book && <p>
-                            <span>{book.name} by {book.author}</span><br/>
-                            {book && <Link to={'/api/book/' + book._id}>View Details</Link>}
-                        </p>}
+                {books && books.map(b => {
+                    return <p key={b._id}>
+                                <span >{b.name} by {b.author}</span><br/>
+                                <Link to={'/api/book/' + b._id}>View Details</Link>
+                            </p>
+                })}
             </div>
         )
     }

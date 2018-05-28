@@ -6,6 +6,7 @@ module.exports = {
     registerPost: async (req, res) => {
         console.log('here')
         const reqUser = req.body;
+        console.log(reqUser)
         const salt = encryption.generateSalt();
         const hashedPass =
             encryption.generateHashedPassword(salt, reqUser.password);

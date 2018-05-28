@@ -24,15 +24,6 @@ module.exports = {
                 res.json(book)
                 console.log(book)
             })
-
-        
-    },
-    postBook: (req, res) => {
-        let book = req.body;
-        console.log(book)
-        res.json({
-            'success': 'true'
-        })
     }
 }
 

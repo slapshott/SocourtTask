@@ -13,13 +13,13 @@ module.exports = app => {
     app.get('/logout', controllers.user.logout);
     
     // Book
-    app.post('api/createBook', controllers.book.postBook)
     app.get('/api/books/search', controllers.book.searchBookByName)
     app.get('/api/books', controllers.book.getAllBooks)
     app.get('/api/book/:id', controllers.book.getBookById)
     
     
     // Genres
+    app.get('/api/genres/search', controllers.genre.searchBookByGenre)
     app.get('/api/genres', controllers.genre.getAllGenres)
     app.get('/api/genre/:id', controllers.genre.getBookByGenre)
 
