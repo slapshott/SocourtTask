@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Input from '../common/Input';
 import { login } from '../../api/remote';
+import { withRouter } from 'react-router-dom'
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
     constructor(props) {
         super(props);
 
@@ -23,6 +24,13 @@ export default class LoginPage extends Component {
         e.preventDefault();
         const res = await login(this.state.name, this.state.password);
         console.log(res)
+        
+        if(res.status == 200){
+            this.props.history.push('/')
+            let token = Math.random()
+            console.log(token)
+            localStorage.setItem('authToken', token)
+        }
     }
 
     render() {
@@ -49,3 +57,5 @@ export default class LoginPage extends Component {
         );
     }
 }
+
+export default withRouter(LoginPage)

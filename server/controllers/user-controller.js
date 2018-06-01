@@ -1,3 +1,4 @@
+const password = require('passport')
 const encryption = require('../util/encryption');
 const User = require('mongoose').model('User');
 
@@ -6,33 +7,44 @@ module.exports = {
     registerPost: async (req, res) => {
         const reqUser = req.body;
         console.log(reqUser)
+        
         try {
             const salt = encryption.generateSalt();
-            console.log('here')
             const hashedPass =
             encryption.generateHashedPassword(salt, reqUser.password);
             const user = await User.create({
-                username: reqUser.username,
+                username: reqUser.name,
                 hashedPass,
                 salt,
                 roles: []
-            });
-            req.logIn(user, (err, user) => {
+            })
+            password.authenticate('local-login', (err, token, userData) => {
                 if (err) {
-                    console.log(err)
-                    res.send('Error occured in logIn')
-                    res.locals.globalError = err;
-                    res.redirect('/register', user);
-                } else {
-                    res.send('Succes')
-                    res.redirect('/');
+                    if (err.name === 'IncorrectCredentialsError') {
+                        return res.status(200).json({
+                            success: false,
+                            message: err.message
+                        });
+                    }
+        
+                    return res.status(200).json({
+                        success: false,
+                        message: 'Could not process the form.'
+                    });
                 }
-            });
+        
+                return res.json({
+                    success: true,
+                    message: 'You have successfully logged in!',
+                    token,
+                    user: userData
+                });
+            })
+  
         } catch (e) {
             console.log(e);
             res.locals.globalError = e;
-            res.send('Error occured')
-            res.redirec('/register');
+            res.status(404).json({Error: e})
         }
     },
 
@@ -44,7 +56,7 @@ module.exports = {
     loginPost: async (req, res) => {
         const reqUser = req.body;
         try {
-            const user = await User.findOne({ username: reqUser.username });
+            const user = await User.findOne({ username: reqUser.name });
             if (!user) {
                 errorHandler('Invalid user data');
                 return;
@@ -53,6 +65,7 @@ module.exports = {
                 errorHandler('Invalid user data');
                 return;
             }
+
             req.logIn(user, (err, user) => {
                 if (err) {
                     errorHandler(err);

@@ -8,6 +8,7 @@ import HomePage from './components/HomePage/HomePage';
 import BookList from './components/BookPage/BookList'
 import DetailsBook from './components/BookPage/DetailsBook';
 import BookByName from './components/BookPage/BookByName';
+import CreateBook from './components/BookPage/CreateBook'
 // Genre
 import GenreList from './components/GenrePage/GenreList';
 import BooksByGenre from './components/GenrePage/BooksByGenre';
@@ -28,15 +29,17 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Header loggedIn={localStorage.getItem('authToken') != null} onLogout={this.onLogout} />
+                <Header loggedIn={localStorage.getItem('authToken') !== null} onLogout={this.onLogout} />
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
                     {/* Book */}
                     <Route path="/api/books/search" component={BookByName} />
+                    <Route path="/api/book/create" component={CreateBook} />
                     <Route path="/api/books" component={BookList} />
                     <Route path="/api/book/:id" component={DetailsBook} />
+                    
                     {/* Genre */}
                     <Route path="/api/genres/search" component={BookByGenre} />
                     <Route path="/api/genres" component={GenreList} />

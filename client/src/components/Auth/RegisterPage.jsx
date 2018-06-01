@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Input from '../common/Input';
 import { register } from '../../api/remote';
+import { withRouter } from 'react-router-dom'
 
-export default class RegisterPage extends Component {
+class RegisterPage extends Component {
     constructor(props) {
         super(props);
 
@@ -22,9 +23,11 @@ export default class RegisterPage extends Component {
 
     async onSubmit(e) {
         e.preventDefault();
-        console.log(this.state.name)
-        console.log(this.state.password)
         const res = await register(this.state.name, this.state.password);
+        console.log(res)
+        if(res.status == 200){
+            this.props.history.push('/')
+        }
     }
 
     render() {
@@ -58,3 +61,5 @@ export default class RegisterPage extends Component {
         );
     }
 }
+
+export default withRouter(RegisterPage)

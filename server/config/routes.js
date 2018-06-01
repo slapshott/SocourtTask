@@ -14,8 +14,9 @@ module.exports = app => {
     
     // Book
     app.get('/api/books/search', controllers.book.searchBookByName)
-    app.get('/api/books', controllers.book.getAllBooks)
+    app.get('/api/books', auth.isAuthed, controllers.book.getAllBooks)
     app.get('/api/book/:id', controllers.book.getBookById)
+    app.post('/api/book/create', controllers.book.createBook)
     
     
     // Genres

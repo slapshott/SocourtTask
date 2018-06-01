@@ -27,7 +27,7 @@ export default class GenreList extends Component {
         return(
             <div>
                 <p>Genres: </p>
-                {genres.map((g,i) => {
+                {genres && genres.map((g,i) => {
                     return <GenreCard
                             name={g.name}
                             creationDate={g.creationDate}

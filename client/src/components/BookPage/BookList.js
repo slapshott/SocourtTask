@@ -26,7 +26,7 @@ export default class BookList extends Component {
         return(
             <div>
                 <p>Books:</p>
-                {books.map((b,i) => {
+                {books && books.map((b,i) => {
                     return <BookCard
                             name={b.name}
                             author={b.author}

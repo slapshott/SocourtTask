@@ -29,7 +29,11 @@ export default class CreateBook extends Component {
         let genre = this.state.genre;
         let creationDate = this.state.creationDate;
         let lastUpdate = this.state.lastUpdate
-
+        console.log(name)
+        console.log(author)
+        console.log(genre)
+        console.log(creationDate)
+        console.log(lastUpdate)
         const res = await createBook(name,author,genre,creationDate,lastUpdate)
         console.log(res)
         
