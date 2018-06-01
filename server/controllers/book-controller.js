@@ -9,7 +9,6 @@ module.exports = {
     },
     getBookById: (req,res) => {
         const id = req.params.id 
-        console.log(id)
         Book.findById(id)
             .then((book) => {
                 res.json(book)
@@ -22,7 +21,6 @@ module.exports = {
             .where({name: name})
             .then((book) => {
                 res.json(book)
-                console.log(book)
             })
     }
 }

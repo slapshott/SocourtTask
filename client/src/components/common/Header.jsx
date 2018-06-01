@@ -13,6 +13,8 @@ export default class Header extends Component {
                 {!loggedIn && <NavLink to="/register" activeClassName="active">Register</NavLink>}
                 <NavLink to="/api/books" activeClassName="active">Books</NavLink>
                 <NavLink to="/api/genres" activeClassName="active">Genres</NavLink>
+                <NavLink to="/api/books/search" activeClassName="active">Search by name</NavLink>
+                <NavLink to="/api/genres/search" activeClassName="active">Search by genre</NavLink>
             </header>
         );
     }

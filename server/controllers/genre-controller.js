@@ -30,13 +30,11 @@ module.exports = {
     },
     searchBookByGenre: (req, res) => {
         const genre = req.query.genre
-        console.log(req.query.genre)
 
         Book.find()
             .where({genre: genre})
             .then((books) => {
                 res.json(books)
-                console.log(books)
             })
     }
     

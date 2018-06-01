@@ -4,13 +4,13 @@ const User = require('mongoose').model('User');
 module.exports = {
     
     registerPost: async (req, res) => {
-        console.log('here')
         const reqUser = req.body;
         console.log(reqUser)
-        const salt = encryption.generateSalt();
-        const hashedPass =
-            encryption.generateHashedPassword(salt, reqUser.password);
         try {
+            const salt = encryption.generateSalt();
+            console.log('here')
+            const hashedPass =
+            encryption.generateHashedPassword(salt, reqUser.password);
             const user = await User.create({
                 username: reqUser.username,
                 hashedPass,
@@ -20,15 +20,18 @@ module.exports = {
             req.logIn(user, (err, user) => {
                 if (err) {
                     console.log(err)
+                    res.send('Error occured in logIn')
                     res.locals.globalError = err;
                     res.redirect('/register', user);
                 } else {
+                    res.send('Succes')
                     res.redirect('/');
                 }
             });
         } catch (e) {
             console.log(e);
             res.locals.globalError = e;
+            res.send('Error occured')
             res.redirec('/register');
         }
     },

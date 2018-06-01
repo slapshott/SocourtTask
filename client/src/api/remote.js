@@ -14,7 +14,7 @@ async function register(name, password) {
         });
         return await res.json();
     }catch(e){
-        console.log(e)
+        return e
     }   
 }
 
@@ -72,27 +72,6 @@ async function getBookByGenre(id){
     }
 }
 
-async function createBook(name,author,genre,createDate,lastUpdate){
-    try{
-        const res = await fetch(host + 'api/createBook' , {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                author,
-                genre,
-                createDate,
-                lastUpdate
-            })
-        })
-        return await res.json()
-    }catch(e){
-        return e
-    }
-}
-
 async function searchByGenre(){
     try{
         const res = await fetch(host + 'api/genres/search')
@@ -127,7 +106,6 @@ export {
     getAllGenres, 
     getBookById, 
     getBookByGenre, 
-    createBook, 
     searchByGenre,
     searchBookByName,
     searchBookByGenre

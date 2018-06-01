@@ -32,7 +32,7 @@ export default class LoginPage extends Component {
                 <form onSubmit={this.onSubmitHandler}>
                     <Input
                         name="name"
-                        value={this.state.email}
+                        value={this.state.name}
                         onChange={this.onChangeHandler}
                         label="Name"
                     />
